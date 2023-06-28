@@ -44,8 +44,9 @@ class Empregados{
 
         $sql = "INSERT INTO ". $this->tabela_db ." SET nome = '".$this->nome."',  email = '".$this->email."', setor = '".$this->setor."',criado = '".$this->criado."'";
         $this->db->query($sql);
+        // echo $sql;
         if($this->db->affected_rows > 0){
-        return true;
+            return true;
         }else{
             return false;
         }

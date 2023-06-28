@@ -16,10 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $db = $database->pegaConexao();
 
     $data = new Empregados($db);
+    $dataInput = json_decode(file_get_contents('php://input'), true);
 
-    $data->nome = $_GET['nome'];
-    $data->email = $_GET['email'];
-    $data->setor = $_GET['setor'];
+    $data->nome = $dataInput['nome'];
+    $data->email = $dataInput['email'];
+    $data->setor = $dataInput['setor'];
     $data->criado = date('Y-m-d H:i:s');
     if ($data->createEmpregados()) {
         echo 'Empregado Cadastrado com sucesso.';
