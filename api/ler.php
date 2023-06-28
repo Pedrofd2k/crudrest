@@ -12,7 +12,7 @@ $dados = new Empregados($db);
 $requsicao = $dados->getEmpregados();
 $contador = $requsicao->num_rows;
 
-echo json_encode($contador);
+// echo json_encode($contador);
 if ($contador > 0){
     $dadosJson = array();
     $dadosJson ["body"] = array();
