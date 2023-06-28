@@ -17,10 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' OR $_SERVER['REQUEST_METHOD'] === 'PUT
 
     $data = new Empregados($db);
 
-    $data->id = isset($_GET['id']) ? $_GET['id'] : die();
-    $data->nome = $_GET['nome'];
-    $data->email = $_GET['email'];
-    $data->setor = $_GET['setor'];
+    $dados_brutos = file_get_contents("php://input");
+    $dados_decodificados = json_decode($dados_brutos, true);
+
+    $data->id = isset($dados_decodificados['id']) ? $dados_decodificados['id'] : die();
+    $data->nome = $dados_decodificados['nome'];
+    $data->email = $dados_decodificados['email'];
+    $data->setor = $dados_decodificados['setor'];
     $data->modificado = date('Y-m-d H:i:s');
     if ($data->updateEmpregados()) {
         echo json_encode("Empregado Atualizado.");

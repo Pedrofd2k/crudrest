@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Empregados</title>
+    <title>Edição de Empregados</title>
     <style>
 
         body {
@@ -69,7 +69,7 @@
             padding-bottom: 35px;
         }
 
-        
+
         .nav-button {
             padding: 20px 35px;
             background-color: #4CAF50;
@@ -87,7 +87,6 @@
     </style>
 </head>
 <body>
-    <br />
     <div class="container">
         <div id="header" align="center">
           <button class="nav-button" onclick="window.location.href='index.html'">Cadastro</button>
@@ -96,7 +95,7 @@
     </div>
     <br />
     <div class="container">
-        <h1>Cadastro de Empregados</h1>
+        <h1>Edição de Empregados</h1>
         <form id="empregado-form">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" required>
@@ -107,37 +106,12 @@
             <label for="setor">Setor:</label>
             <input type="text" id="setor" required>
             
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Atualizar</button>
         </form>
 
         <div id="resultado"></div>
     </div>
 
-    <script>
-        document.getElementById('empregado-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var nome = document.getElementById('nome').value;
-            var email = document.getElementById('email').value;
-            var setor = document.getElementById('setor').value;
-            
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost/crudrest/api/criar.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        document.getElementById('resultado').textContent = xhr.responseText;
-                    } else {
-                        document.getElementById('resultado').textContent = 'Erro ao cadastrar empregado.'+xhr.responseText;
-                    }
-                }
-            };
-
-            var data = JSON.stringify({ nome: nome, email: email, setor: setor });
-            xhr.send(data);
-        });
-    </script>
+    
 </body>
 </html>
