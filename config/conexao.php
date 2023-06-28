@@ -11,11 +11,11 @@ class Database {
      */
     public function pegaConexao()
     {
-       $this->db = null;
+        $this->db = null;
 
         try {
             $this->db = new mysqli(servidor_sql,usuario_sql,senha_sql,banco_de_dados);
-         //   print "Banco conectado";
+           print "Banco conectado";
         }catch (Exception $e){
             print "DataBase não conectada: ". $e->getMessage();
         }

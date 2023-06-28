@@ -1,0 +1,12 @@
+create database bancocrud;
+
+use bancocrud;
+
+CREATE TABLE empregados (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  setor VARCHAR(255) NOT NULL,
+  criado DATETIME NOT NULL,
+  modificado TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
